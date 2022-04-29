@@ -1,0 +1,55 @@
+<mat-horizontal-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput [(ngModel)]="name" placeholder="Last name, First name" formControlName="firstCtrl" required data-cy="name">
+      </mat-form-field><br>
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput [(ngModel)]="address" placeholder="Address" formControlName="firstCtrl" required data-cy="address">
+      </mat-form-field>
+      <div>
+        <button mat-button color="primary" (click)="validateAddress(stepper)">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your payment method</ng-template>
+      <mat-form-field>
+        <mat-label>Name on card</mat-label>
+        <input matInput [(ngModel)]="cardHolder" formControlName="secondCtrl" placeholder="Name as on card" required data-cy="nameOnCard">
+      </mat-form-field><br>
+      <mat-form-field>
+        <mat-label>Card number</mat-label>
+        <input matInput [(ngModel)]="cardNumber" formControlName="secondCtrl" placeholder="Credit card number" required data-cy="creditCardNumber">
+      </mat-form-field>
+      <div>
+        <button mat-button color="primary" matStepperPrevious>Back</button>
+        <button mat-button color="primary" (click)="validateCreditCard(stepper)">Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Final check</ng-template>
+      <mat-list role="list">
+        <mat-list-item role="listitem">Name: {{name}}</mat-list-item>
+        <mat-list-item role="listitem">Address: {{address}}</mat-list-item>
+        <mat-list-item role="listitem">Card holder: {{cardHolder}}</mat-list-item>
+        <mat-list-item role="listitem">Card number: {{cardNumber}}</mat-list-item>
+        <mat-list-item role="listitem">Sum: {{sum}}</mat-list-item>
+      </mat-list>
+      <div>
+        <button mat-button color="primary" matStepperPrevious>Back</button>
+        <button mat-button color="primary" matStepperNext>Order</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p data-cy="successMessage">Thank you for your purchase.</p>
+  </mat-step>
+</mat-horizontal-stepper>

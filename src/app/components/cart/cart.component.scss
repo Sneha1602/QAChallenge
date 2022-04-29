@@ -1,0 +1,22 @@
+:host {
+
+  padding: 20px;
+
+  #checkout-list {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    mat-card {
+      width: 300px;
+      margin: 10px;
+    }
+
+  }
+
+  table {
+    width: 100%;
+    margin: 10px;
+  }
+
+}

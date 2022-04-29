@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <a routerLink="/">Shop</a>
+    <span class="spacer"></span>
+    <span *ngIf="router.url === '/'">Go to</span>
+    <button *ngIf="router.url === '/'" routerLink="/cart" mat-icon-button aria-label="Checkout">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet>
+</router-outlet>

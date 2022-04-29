@@ -1,0 +1,41 @@
+<div id="product-list-header">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input matInput type="text" [(ngModel)]="productFilterValue" (ngModelChange)="filterProducts()">
+    <button *ngIf="productFilterValue" matSuffix mat-icon-button aria-label="Clear" (click)="productFilterValue=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <button mat-button color="primary" aria-label="Sort products" (click)="toggleSortOrder()">
+    <mat-icon>sort_by_alpha</mat-icon>
+    <mat-icon *ngIf="sortDirection === 'desc'">arrow_downward</mat-icon>
+    <mat-icon *ngIf="sortDirection === 'asc'">arrow_upward</mat-icon>
+  </button>
+</div>
+
+<div id="product-list-cards">
+  <mat-card *ngFor="let product of products">
+    <mat-card-header>
+      <div mat-card-avatar><mat-icon >card_giftcard</mat-icon></div>
+      <mat-card-title>{{product.name}}</mat-card-title>
+      <mat-card-subtitle>Tag</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{product.description}}
+      </p>
+      <p>
+        Price: {{product.price}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button aria-label="Add to cart" (click)="addToCart(product.name)" data-cy ="addToCartButton">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+      <button *ngIf="cartContains(product.name)" mat-icon-button aria-label="Add to cart" (click)="removeFromCart(product.name)" data-cy ="removeFromCartButton">
+        <mat-icon>remove_shopping_cart</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

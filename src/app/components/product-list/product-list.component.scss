@@ -1,0 +1,31 @@
+:host {
+
+  .mat-card-header-text {
+    background-color: pink;
+    margin: 0px !important;
+  }
+
+  #product-list-header {
+    margin: 10px;
+  }
+
+  #product-list-cards {
+    display: flex;
+    flex-wrap: wrap;
+
+    mat-card {
+      width: 300px;
+      margin: 10px;
+
+      mat-card-header div[mat-card-avatar] {
+        background-color: #888;
+        color: white;
+        display: flex;
+
+        mat-icon {
+          margin: auto;
+        }
+      }
+    }
+  }
+}
